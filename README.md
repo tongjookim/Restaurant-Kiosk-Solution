@@ -1,58 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🍔 Restaurant Kiosk & Admin Solution
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+라라벨(Laravel)로 구축한 스마트 매장 관리 및 키오스크 통합 솔루션입니다. 고객용 키오스크 화면과 사장님용 실시간 관리자 대시보드를 제공합니다.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 주요 기능
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 📱 고객용 키오스크 (Client Kiosk)
+* **실시간 메뉴 판:** 카테고리별 메뉴 확인 및 장바구니 담기
+* **스마트 장바구니:** 수량 조절(+/-) 및 개별 삭제 기능
+* **결제 프로세스:** 카드, 현금, QR 등 다양한 결제 수단 선택 및 주문 완료 처리
+* **LocalStorage 연동:** 페이지 이동 시에도 장바구니 데이터 유지
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 👨‍💼 사장님용 관리자 (Admin Dashboard)
+* **실시간 주문 현황:** 테이블별 주문 내역 확인 및 원클릭 주문 승인
+* **카테고리/메뉴 CRUD:** 카테고리 추가/수정/삭제 및 메뉴 상세 설정 (가격, 상태 등)
+* **품절 관리:** 메뉴별 실시간 판매 상태(판매중/품절) 토글 기능
+* **결제 내역 조회:** 과거 주문 기록 및 매출 상세 내역 확인 (페이징 지원)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠 기술 스택 (Tech Stack)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| 구분 | 기술 스택 |
+| :--- | :--- |
+| **Backend** | Laravel 11 (PHP 8.x) |
+| **Frontend** | Tailwind CSS, Blade Engine, Axios |
+| **Database** | SQLite (Default) |
+| **Real-time** | Laravel Broadcasting (Pusher 연동 가능) |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## ⚙️ 시작하기 (Installation)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+1. **저장소 복제**
+   ```bash
+   git clone https://github.com/tongjookim/Restaurant-Kiosk-Solution.git
+   cd Restaurant-Kiosk-Solution
 
-```bash
-composer require laravel/boost --dev
+2. **패키지 설치**
+    ```bash
+   composer install
+   npm install && npm run dev
 
-php artisan boost:install
-```
+3. **환경설정**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+4.  **데이터베이스 설정**
+    ```bash
+    php artisan migrate --seed
 
-## Contributing
+5. **서버 실행**
+   ```bash
+   php artisan serve --port=2323
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📂 핵심 프로젝트 구조
+* **`app/Http/Controllers:`** 키오스크 및 관리자 핵심 로직
+* **`resources/views/kiosk:`** 고객용 화면 UI (Blade)
+* **`resources/views/admin:`** 관리자용 화면 UI (Blade)
+* **`resources/views/layouts:`** 공통 레이아웃 (Admin/App)
+* **`routes/api.php:`** 비동기 통신을 위한 API 주소 정의
